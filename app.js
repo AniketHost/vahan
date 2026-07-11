@@ -76,7 +76,7 @@ app.use('/api', router);
 
 // Serve Angular frontend (production build)
 // app.use(express.static(path.join(__dirname, 'dist/your-angular-app')));
-app.use(express.static(path.join(__dirname, 'vahan-contact/browser/index.html')));
+// app.use(express.static(path.join(__dirname, 'vahan-contact/browser/index.html')));
 
 
 // Catch-all route to serve Angular's index.html for client-side routing
@@ -88,6 +88,12 @@ app.use(express.static(path.join(__dirname, 'vahan-contact/browser/index.html'))
 // app.get('*', (req, res) => {
 //   res.sendFile(path.join(__dirname, 'dist/news-portal/index.html'));
 // });
+
+app.use(express.static(path.join(__dirname, "vahan-contact/browser")));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "vahan-contact/browser/index.html"));
+});
 
 // Start the server
 const PORT = process.env.PORT || 3000;
